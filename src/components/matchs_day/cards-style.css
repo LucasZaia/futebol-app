@@ -1,0 +1,17 @@
+.cards{
+    background-color: black;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.card-group{
+    margin-left: 70px;
+    align-items: center;
+
+}
+
+.img-competition{
+    width: 100px;
+    height: 100px;
+}
