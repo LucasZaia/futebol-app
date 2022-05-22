@@ -90,7 +90,7 @@ function Matchs() {
     });
 
   return (
-    <div>
+    <div className="matchs">
       <CssBaseline />
       <h3>Jogos</h3>
       <Container maxWidth="xl">
