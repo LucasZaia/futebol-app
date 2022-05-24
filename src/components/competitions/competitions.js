@@ -21,7 +21,7 @@ export default function Competitions() {
           <Grid container spacing={2}>
             <Grid item xlg={2}>
               <div className="competition">
-                <img src={ImageBR} width="100" height="100" />
+                <img src={ImageBR} className="img" width="100" height="100" />
               </div>
             </Grid>
             <Grid item xlg={2}>
