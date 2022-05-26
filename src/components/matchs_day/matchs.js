@@ -8,8 +8,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import styles from "./cards-style.css";
 import { useState } from "react";
+import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
 import imageAL from "../../imgs/00 Bundesliga.png";
 import imageBR from "../../imgs/Campeonato Brasileiro Série A.png";
@@ -22,7 +22,7 @@ import imageHOL from "../../imgs/00 Eredivisie.png";
 import imageESP from "../../imgs/LaLiga.png";
 import imageLIB from "../../imgs/70 Copa CONMEBOL Libertadores.png";
 import imageUCL from "../../imgs/UEFA CHAMPIONS LEAGUE 4.png";
-
+import { display } from "@mui/system";
 
 function ConvertDate(time) {
   const dateStr = new Date(time).toLocaleString("pt-BR", {
@@ -82,7 +82,7 @@ function Matchs() {
     .get("matches", {
       headers: {
         "X-Auth-Token": "ce90310edbf042dfabceb68624d6fda8",
-        "Accept": "application/json"
+        Accept: "application/json",
       },
     })
     .then(function (resp) {
@@ -98,6 +98,10 @@ function Matchs() {
           className="card-group"
           sx={{ sm: "none", md: "none", xlg: "block" }}
         >
+          <Box sx={{ display: "flex" }}>
+            <CircularProgress className="match-progress"/>
+          </Box>
+
           {news?.map((n) => (
             <Card sx={{ width: 700 }} className="cards">
               <CardContent>

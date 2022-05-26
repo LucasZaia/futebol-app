@@ -1,46 +1,42 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import competitions from "./competitions.css";
-import { styled, alpha } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import ImageBR from "../../imgs/00 Bundesliga.png";
 import { Link } from "react-router-dom";
-import { InputBase } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
+import CircularProgress from '@mui/material/CircularProgress';
+import axios from "axios";
 
 export default function Competitions() {
 
+  const request = axios.create({
+    baseURL: "http://api.football-data.org/v2/",
+  });
+
+  request
+    .get("competitions", {
+      headers: {
+        "X-Auth-Token": "ce90310edbf042dfabceb68624d6fda8",
+        Accept: "application/json",
+      },
+    })
+    .then(function (resp) {
+        console.log(resp.data.competitions);
+    });
   return (
     <div>
       <div className="search-leagues">
+        <h3>Competições</h3>
       </div>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         <Box>
-          <Grid container spacing={2}>
-            <Grid item xlg={2}>
-              <div className="competition">
-                <img src={ImageBR} className="img" width="100" height="100" />
-              </div>
-            </Grid>
-            <Grid item xlg={2}>
-              <div className="competition">
-                <img src={ImageBR} width="100" height="100" />
-              </div>
-            </Grid>
-            <Grid item xlg={2}>
+          <Grid item xlg={2}>
+            <div className="competition">
               <Link to="/">
-                <div className="competition">
-                  <img src={ImageBR} width="100" height="100" />
-                </div>
+                <img src={ImageBR} className="img" />
               </Link>
-            </Grid>
-            <Grid item xlg={2}>
-              <div className="competition">
-                <img src={ImageBR} width="100" height="100" />
-              </div>
-            </Grid>
+            </div>
           </Grid>
         </Box>
       </Container>

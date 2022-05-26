@@ -1,3 +1,9 @@
+
+*{
+    padding: none;
+    margin: none;
+}
+
 .competition{
     margin: 10px;
     width:100px;
@@ -7,9 +13,10 @@
 .search-leagues{
     width: 500px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .img{
-    width: 200;
-    height: 100;
+    width: 100px;
+    height: 100px;
 }
