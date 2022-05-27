@@ -7,8 +7,13 @@ import ImageBR from "../../imgs/00 Bundesliga.png";
 import { Link } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
+import { useState } from "react";
+import { margin } from "@mui/system";
 
 export default function Competitions() {
+
+
+  const [leagues, setLeagues] = useState();
 
   const request = axios.create({
     baseURL: "http://api.football-data.org/v2/",
@@ -22,6 +27,7 @@ export default function Competitions() {
       },
     })
     .then(function (resp) {
+        setLeagues(resp.data.competitions);
         console.log(resp.data.competitions);
     });
   return (
@@ -30,15 +36,19 @@ export default function Competitions() {
         <h3>Competições</h3>
       </div>
       <Container maxWidth="md">
-        <Box>
-          <Grid item xlg={2}>
-            <div className="competition">
-              <Link to="/">
-                <img src={ImageBR} className="img" />
-              </Link>
-            </div>
-          </Grid>
-        </Box>
+        <Grid className="contains" container spacing={2}>
+          {leagues?.map((cups) =>  (
+            <Grid key={cups.id} item xlg={3}>
+              <div className="competition">
+                <Link className="link" to="/">
+                  {console.log(leagues.length)}
+                  <p key={cups.id}>{cups.name}</p>
+                  <img src={ImageBR} className="img" />
+                </Link>
+              </div>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </div>
   );
